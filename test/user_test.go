@@ -1,16 +1,17 @@
 package test
 
 import (
-	"GinHello/init"
+	"GinHello/initRouter"
 	"gopkg.in/go-playground/assert.v1"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"testing"
 )
 
 func TestUserSave(t *testing.T) {
 	username := "lisi"
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodGet, "/user/"+username, nil)
 	router.ServeHTTP(w, getReq)
@@ -20,10 +21,11 @@ func TestUserSave(t *testing.T) {
 
 func TestUserSaveQuery(t *testing.T) {
 	username := "lisi"
-	router := init.SetupRouter()
+	age := 18
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
-	getReq, _ := http.NewRequest(http.MethodGet, "/user?name="+username, nil)
+	getReq, _ := http.NewRequest(http.MethodGet, "/user?name="+username+"&age="+strconv.Itoa(age), nil)
 	router.ServeHTTP(w, getReq)
 	assert.Equal(t, http.StatusOK, w.Code)
-	assert.Equal(t, "用户"+username+"已经保存", w.Body.String())
+	assert.Equal(t, "用户:"+username+",年龄:"+strconv.Itoa(age)+"已经保存", w.Body.String())
 }

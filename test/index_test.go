@@ -1,7 +1,7 @@
 package test
 
 import (
-	"GinHello/init"
+	"GinHello/initRouter"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
@@ -10,7 +10,7 @@ import (
 
 // router("/") get 测试
 func TestIndexGetRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodGet, "/", nil)
 	router.ServeHTTP(w, getReq)
@@ -21,7 +21,7 @@ func TestIndexGetRouter(t *testing.T) {
 
 // router("/") post 测试
 func TestIndexPostRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodPost, "/", nil)
 	router.ServeHTTP(w, getReq)
@@ -31,7 +31,7 @@ func TestIndexPostRouter(t *testing.T) {
 
 // router("/") put 测试
 func TestIndexPutRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodPut, "/", nil)
 	router.ServeHTTP(w, getReq)
@@ -41,7 +41,7 @@ func TestIndexPutRouter(t *testing.T) {
 
 // router("/") delete 测试
 func TestIndexDeleteRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodDelete, "/", nil)
 	router.ServeHTTP(w, getReq)
@@ -51,7 +51,7 @@ func TestIndexDeleteRouter(t *testing.T) {
 
 // router("/") patch 测试
 func TestIndexPatchRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodPatch, "/", nil)
 	router.ServeHTTP(w, getReq)
@@ -61,7 +61,7 @@ func TestIndexPatchRouter(t *testing.T) {
 
 // router("/") head 测试
 func TestIndexHeadRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodHead, "/", nil)
 	router.ServeHTTP(w, getReq)
@@ -71,7 +71,7 @@ func TestIndexHeadRouter(t *testing.T) {
 
 // router("/") options 测试
 func TestIndexOptionsRouter(t *testing.T) {
-	router := init.SetupRouter()
+	router := initRouter.SetupRouter()
 	w := httptest.NewRecorder()
 	getReq, _ := http.NewRequest(http.MethodOptions, "/", nil)
 	router.ServeHTTP(w, getReq)
