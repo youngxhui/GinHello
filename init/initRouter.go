@@ -1,4 +1,4 @@
-package init_router
+package init
 
 import (
 	"github.com/gin-gonic/gin"

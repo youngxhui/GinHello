@@ -1,7 +1,7 @@
 package index__test
 
 import (
-	init_router "GinHello/init-router"
+	"GinHello/init"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
@@ -9,7 +9,7 @@ import (
 )
 
 func TestIndexGetRouter(t *testing.T) {
-	router := init_router.SetupRouter()
+	router := init.SetupRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 	router.ServeHTTP(w, req)
