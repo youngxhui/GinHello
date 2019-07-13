@@ -1,7 +1,7 @@
 package initRouter
 
 import (
-	"GinHello/user"
+	"GinHello/handler"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -31,12 +31,12 @@ func SetupRouter() *gin.Engine {
 	// 添加 user
 	userRouter := router.Group("/user")
 	{
-		userRouter.GET("/:name", user.Save)
-		userRouter.GET("", user.SaveByQuery)
+		userRouter.GET("/:name", handler.Save)
+		userRouter.GET("", handler.SaveByQuery)
 	}
 
-	//router.GET("/user/:name", user.Save)
-	//router.GET("/user", user.SaveByQuery)
+	//router.GET("/handler/:name", handler.Save)
+	//router.GET("/handler", handler.SaveByQuery)
 	return router
 }
 
