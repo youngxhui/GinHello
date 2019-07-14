@@ -31,12 +31,12 @@ func SetupRouter() *gin.Engine {
 	// 添加 user
 	userRouter := router.Group("/user")
 	{
-		userRouter.GET("/:name", handler.Save)
-		userRouter.GET("", handler.SaveByQuery)
+		userRouter.GET("/:name", handler.UserSave)
+		userRouter.GET("", handler.UserSaveByQuery)
 	}
 
-	//router.GET("/handler/:name", handler.Save)
-	//router.GET("/handler", handler.SaveByQuery)
+	//router.GET("/handler/:name", handler.UserSave)
+	//router.GET("/handler", handler.UserSaveByQuery)
 	return router
 }
 
