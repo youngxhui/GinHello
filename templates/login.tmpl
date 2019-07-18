@@ -1,13 +1,14 @@
 {{define "login-form"}}
-    <form action="/">
+    <form action="/user/login">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="输入 email">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="输入 email"
+                   name="email">
             <small id="emailHelp" class="form-text text-muted">我们会严格保存您的邮箱</small>
         </div>
         <div class="form-group">
             <label for="password">密码</label>
-            <input type="password" class="form-control" id="password" placeholder="密码">
+            <input type="password" class="form-control" id="password" placeholder="密码" name="password">
         </div>
         <button type="submit" class="btn btn-primary">登录</button>
     </form>
@@ -17,7 +18,8 @@
     <form action="/user/register" method="post">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="输入 email">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
+                   placeholder="输入 email">
             <small id="emailHelp" class="form-text text-muted">我们会严格保存您的邮箱</small>
         </div>
         <div class="form-group">
@@ -28,6 +30,6 @@
             <label for="password-again">确认密码</label>
             <input type="password" class="form-control" id="password-again" placeholder="再次输入密码" name="password-again">
         </div>
-        <button type="submit" class="btn btn-primary">登录</button>
+        <button type="submit" class="btn btn-primary">注册</button>
     </form>
 {{end}}

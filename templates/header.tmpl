@@ -22,14 +22,22 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
             </form>
-            <ul class="navbar-nav ">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#login-modal">登录</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#register-modal">注册</a>
-                </li>
-            </ul>
+            {{ if .email }}
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#login-modal">{{ .email }}</a>
+                    </li>
+                </ul>
+            {{ else }}
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#login-modal">登录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#register-modal">注册</a>
+                    </li>
+                </ul>
+            {{end}}
         </div>
     </nav>
 
@@ -59,7 +67,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="login-modal-title">登录</h5>
+                    <h5 class="modal-title" id="login-modal-title">注册</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -12,18 +12,18 @@ func SetupRouter() *gin.Engine {
 	} else {
 		router.LoadHTMLGlob("templates/*")
 	}
-	router.StaticFile("/favicon.ico", "./favicon.ico")
-	router.Static("/statics", "./statics")
+	router.StaticFile("/favicon.ico", "/favicon.ico")
+	router.Static("/statics", "/statics/")
 	index := router.Group("/")
 	{
 		index.Any("", handler.Index)
 	}
+
 	// 添加 user
 	userRouter := router.Group("/user")
 	{
-		userRouter.GET("/:name", handler.UserSave)
-		userRouter.GET("", handler.UserSaveByQuery)
 		userRouter.POST("/register", handler.UserRegister)
+		userRouter.POST("/login", handler.UserLogin)
 	}
 	return router
 }
