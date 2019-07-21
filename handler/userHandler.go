@@ -32,7 +32,7 @@ func UserLogin(context *gin.Context) {
 	u := user.QueryByEmail()
 	if u.Password == user.Password {
 		log.Println("登录成功", u.Email)
-		context.HTML(http.StatusOK, "index.tmpl", gin.H{
+		context.HTML(http.StatusOK, "index", gin.H{
 			"email": u.Email,
 		})
 	}
