@@ -1,0 +1,43 @@
+{{template "header"}}
+{{template "nav"}}
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+            <div>
+                <img src="{{ .user.Avatar.String }}" alt="avatar" class="rounded-circle">
+            </div>
+
+        </div>
+        <div class="col-sm">
+            <form method="post" action="/user/update" enctype="multipart/form-data">
+                <div class="form-group" hidden>
+                    <label for="user-id">id</label>
+                    <input type="text" id="user-id"
+                           name="id"
+                           value="{{ .user.Id }}">
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Email</label>
+                    <input type="email" class="form-control" id="user-email" aria-describedby="emailHelp"
+                           name="email"
+                           readonly
+                           placeholder="Enter email"
+                           value="{{ .user.Email }}">
+                </div>
+                <div class="form-group">
+                    <label for="user-password">密码</label>
+                    <input type="password" class="form-control" id="user-password" placeholder="密码" name="password"
+                           value="{{.user.Password}}">
+                </div>
+                <div class="form-group">
+                    <label for="user-avatar">上传头像</label>
+                    <input type="file" class="form-control-file" id="user-avatar" name="avatar-file">
+                </div>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </form>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+</div>
+

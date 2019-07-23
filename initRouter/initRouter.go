@@ -2,7 +2,9 @@ package initRouter
 
 import (
 	"GinHello/handler"
+	"GinHello/utils"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func SetupRouter() *gin.Engine {
@@ -13,7 +15,8 @@ func SetupRouter() *gin.Engine {
 		router.LoadHTMLGlob("templates/*")
 	}
 	router.StaticFile("/favicon.ico", "/favicon.ico")
-	router.Static("/statics", "/statics/")
+	router.Static("/statics", "./statics/")
+	router.StaticFS("/avatar", http.Dir(utils.RootPath()+"avatar/"))
 	index := router.Group("/")
 	{
 		index.Any("", handler.Index)
@@ -24,6 +27,8 @@ func SetupRouter() *gin.Engine {
 	{
 		userRouter.POST("/register", handler.UserRegister)
 		userRouter.POST("/login", handler.UserLogin)
+		userRouter.GET("/profile/", handler.UserProfile)
+		userRouter.POST("/update", handler.UpdateUserProfile)
 	}
 	return router
 }
