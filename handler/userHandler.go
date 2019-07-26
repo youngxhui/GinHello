@@ -35,7 +35,7 @@ func UserLogin(context *gin.Context) {
 
 	u := user.QueryByEmail()
 	if u.Password == user.Password {
-		log.Println("登录成功", u.Email)
+		context.SetCookie("user_cookie", string(u.Id), 1000, "/", "localhost", false, true)
 		context.HTML(http.StatusOK, "index.tmpl", gin.H{
 			"email": u.Email,
 			"id":    u.Id,
