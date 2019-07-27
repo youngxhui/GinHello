@@ -1,45 +1,23 @@
 package initRouter
 
 import (
-	"GinHello/handler"
+	"GinHello/handler/article"
 	"github.com/gin-gonic/gin"
-	"net/http"
-	"strings"
 )
 
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
-	index := router.Group("/")
+	articleRouter := router.Group("")
 	{
-		//// 添加 Get 请求路由
-		//index.GET("", retHelloGinAndMethod)
-		//// 添加 Post 请求路由
-		//index.POST("", retHelloGinAndMethod)
-		//// 添加 Put 请求路由
-		//index.PUT("", retHelloGinAndMethod)
-		//// 添加 Delete 请求路由
-		//index.DELETE("", retHelloGinAndMethod)
-		//// 添加 Patch 请求路由
-		//index.PATCH("", retHelloGinAndMethod)
-		//// 添加 Head 请求路由
-		//index.HEAD("", retHelloGinAndMethod)
-		//// 添加 Options 请求路由
-		//index.OPTIONS("", retHelloGinAndMethod)
-		index.Any("", retHelloGinAndMethod)
-	}
-	// 添加 user
-	userRouter := router.Group("/user")
-	{
-		userRouter.GET("/:name", handler.UserSave)
-		userRouter.GET("", handler.UserSaveByQuery)
+		// 通过获取单篇文章
+		articleRouter.GET("/article/:id", article.GetOne)
+		// 获取所有文章
+		articleRouter.GET("/articles", article.GetAll)
+		// 添加一篇文章
+		articleRouter.POST("/article", article.Insert)
+		articleRouter.DELETE("/article/:id", article.DeleteOne)
 	}
 
-	//router.GET("/handler/:name", handler.UserSave)
-	//router.GET("/handler", handler.UserSaveByQuery)
 	return router
-}
-
-func retHelloGinAndMethod(context *gin.Context) {
-	context.String(http.StatusOK, "hello gin "+strings.ToLower(context.Request.Method)+" method")
 }
