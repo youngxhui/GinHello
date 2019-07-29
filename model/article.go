@@ -6,9 +6,9 @@ import (
 )
 
 type Article struct {
-	Id      int    `json:"id"`
-	Type    string `json:"type"`
-	Content string `json:"content"`
+	Id      int    `json:"id" example:"1"`
+	Type    string `json:"type" example:"js"`
+	Content string `json:"content" example:"hello js"`
 }
 
 func (article Article) Insert() int {
