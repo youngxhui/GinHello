@@ -45,6 +45,13 @@ func GetOne(context *gin.Context) {
 	id := context.Param("id")
 	i, e := strconv.Atoi(id)
 	if e != nil {
+		context.JSON(http.StatusBadRequest, gin.H{
+			"result": model.Result{
+				Code:    http.StatusBadRequest,
+				Message: "id 不是 int 类型, id 转换失败",
+				Data:    e.Error(),
+			},
+		})
 		log.Panicln("id 不是 int 类型, id 转换失败", e.Error())
 	}
 	article := model.Article{
@@ -53,7 +60,11 @@ func GetOne(context *gin.Context) {
 
 	art := article.FindById()
 	context.JSON(http.StatusOK, gin.H{
-		"article": art,
+		"result": model.Result{
+			Code:    http.StatusOK,
+			Message: "查询成功",
+			Data:    art,
+		},
 	})
 
 }
@@ -66,8 +77,13 @@ func GetOne(context *gin.Context) {
 func GetAll(context *gin.Context) {
 	article := model.Article{}
 	articles := article.FindAll()
+	result := model.Result{
+		Code:    http.StatusOK,
+		Message: "查询成功",
+		Data:    articles,
+	}
 	context.JSON(http.StatusOK, gin.H{
-		"articles": articles,
+		"result": result,
 	})
 }
 
