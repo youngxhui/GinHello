@@ -7,13 +7,29 @@
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
 
-POST http://localhost:8080/article
+GET http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "type": "go",
-  "content": "Hello Go"
+  "username": "123",
+  "password": "Hello Go"
 }
 
+
+###
+
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "123",
+  "password": "Hello Go"
+}
+
+###
+
+GET http://localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhbGwiLCJleHAiOjE1NjQ4NDEzNjUsImp0aSI6Ilx1MDAwMCIsImlhdCI6MTU2NDc1NDk2NSwiaXNzIjoiZ2luIGhlbGxvIiwibmJmIjoxNTY0NzU0OTY1LCJzdWIiOiJsb2dpbiJ9.V9230Piv2MnoE99qqmYpK0-ZJa4ewmOimMbGsUYkJmA
 
 ###
