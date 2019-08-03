@@ -10,11 +10,8 @@ import (
 
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
-	//router.Use(middleware.Auth())
 	router.GET("/", middleware.Auth(), func(context *gin.Context) {
-		time := time.Now()
-		//time = time.Nanosecond()
-		context.JSON(http.StatusOK, time.Unix())
+		context.JSON(http.StatusOK, time.Now().Unix())
 	})
 	router.GET("/login", user.CreateJwt)
 	router.POST("/register", user.Register)

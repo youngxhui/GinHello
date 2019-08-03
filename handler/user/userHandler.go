@@ -9,12 +9,6 @@ import (
 	"time"
 )
 
-type Claims struct {
-	Username string
-	password string
-	jwt.StandardClaims
-}
-
 func CreateJwt(ctx *gin.Context) {
 	// 获取用户
 	user := &model.User{}
@@ -32,9 +26,7 @@ func CreateJwt(ctx *gin.Context) {
 	}
 	u := user.QueryByUsername()
 	if u.Password == user.Password {
-
-		var oneDayOfHours = 60 * 60 * 24
-		expiresTime := time.Now().Unix() + int64(oneDayOfHours)
+		expiresTime := time.Now().Unix() + int64(config.OneDayOfHours)
 		claims := jwt.StandardClaims{
 			Audience:  user.Username,     // 受众
 			ExpiresAt: expiresTime,       // 失效时间

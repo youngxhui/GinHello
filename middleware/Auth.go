@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
-	"time"
 )
 
 func Auth() gin.HandlerFunc {
@@ -18,20 +17,21 @@ func Auth() gin.HandlerFunc {
 			Data:    nil,
 		}
 		auth := context.Request.Header.Get("Authorization")
-		auth = strings.Fields(auth)[1]
-		println("index is ", auth)
 		if len(auth) == 0 {
 			context.Abort()
 			context.JSON(http.StatusUnauthorized, gin.H{
 				"result": result,
 			})
 		}
+		auth = strings.Fields(auth)[1]
 		// 校验token
-		claims, err := parseToken(auth)
+		_, err := parseToken(auth)
 		if err != nil {
-			println("解析token失败")
-		} else if time.Now().Unix() > claims.ExpiresAt {
-			println("token 过期")
+			context.Abort()
+			result.Message = "token 过期" + err.Error()
+			context.JSON(http.StatusUnauthorized, gin.H{
+				"result": result,
+			})
 		} else {
 			println("token 正确")
 		}
@@ -48,5 +48,4 @@ func parseToken(token string) (*jwt.StandardClaims, error) {
 		}
 	}
 	return nil, err
-
 }
