@@ -1,8 +1,8 @@
 package user
 
 import (
-	"GinHello/config"
 	"GinHello/model"
+	"GinHello/setting"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -26,7 +26,7 @@ func CreateJwt(ctx *gin.Context) {
 	}
 	u := user.QueryByUsername()
 	if u.Password == user.Password {
-		expiresTime := time.Now().Unix() + int64(config.OneDayOfHours)
+		expiresTime := time.Now().Unix() + setting.AppConfig.Jwt.Expires
 		claims := jwt.StandardClaims{
 			Audience:  user.Username,     // 受众
 			ExpiresAt: expiresTime,       // 失效时间
@@ -36,7 +36,7 @@ func CreateJwt(ctx *gin.Context) {
 			NotBefore: time.Now().Unix(), // 生效时间
 			Subject:   "login",           // 主题
 		}
-		var jwtSecret = []byte(config.Secret)
+		var jwtSecret = []byte(setting.AppConfig.Jwt.Secret)
 		tokenClaims := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 		if token, err := tokenClaims.SignedString(jwtSecret); err == nil {
 			result.Message = "登录成功"
