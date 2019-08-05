@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"GinHello/model"
-	"GinHello/setting"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -41,7 +40,7 @@ func Auth() gin.HandlerFunc {
 
 func parseToken(token string) (*jwt.StandardClaims, error) {
 	jwtToken, err := jwt.ParseWithClaims(token, &jwt.StandardClaims{}, func(token *jwt.Token) (i interface{}, e error) {
-		return []byte(setting.AppConfig.Jwt.Secret), nil
+		return []byte("hello gin"), nil
 	})
 	if err == nil && jwtToken != nil {
 		if claim, ok := jwtToken.Claims.(*jwt.StandardClaims); ok && jwtToken.Valid {

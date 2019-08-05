@@ -1,6 +1,0 @@
-database:
-  url: root:1234@tcp(127.0.0.1:3306)/ginhello
-  type: mysql
-jwt:
-  secret: hello gin
-  expires: 86400
