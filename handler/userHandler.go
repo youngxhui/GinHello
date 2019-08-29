@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strconv"
 	"time"
 )
@@ -74,7 +75,7 @@ func UpdateUserProfile(context *gin.Context) {
 		log.Panicln("文件上传错误", e.Error())
 	}
 	path := utils.RootPath()
-	path = path + "avatar\\"
+	path = filepath.Join(path, "avatar")
 	e = os.MkdirAll(path, os.ModePerm)
 	if e != nil {
 		context.HTML(http.StatusOK, "error.tmpl", gin.H{
