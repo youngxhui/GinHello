@@ -25,20 +25,26 @@ func CreateJwt(ctx *gin.Context) {
 		})
 	}
 	u := user.QueryByUsername()
+	println("user id =>", u.ID)
 	if u.Password == user.Password {
 		expiresTime := time.Now().Unix() + int64(config.OneDayOfHours)
 		claims := jwt.StandardClaims{
 			Audience:  user.Username,     // 受众
 			ExpiresAt: expiresTime,       // 失效时间
-			Id:        string(user.ID),   // 编号
+			Id:        string(u.ID),      // 编号
 			IssuedAt:  time.Now().Unix(), // 签发时间
 			Issuer:    "gin hello",       // 签发人
 			NotBefore: time.Now().Unix(), // 生效时间
 			Subject:   "login",           // 主题
 		}
-		var jwtSecret = []byte(config.Secret)
+
 		tokenClaims := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-		if token, err := tokenClaims.SignedString(jwtSecret); err == nil {
+
+		// 通过密码和保留字段加密
+		var jwtSecret = []byte(config.Secret + u.Password)
+		token, err := tokenClaims.SignedString(jwtSecret)
+
+		if err == nil {
 			result.Message = "登录成功"
 			result.Data = "Bearer " + token
 			result.Code = http.StatusOK

@@ -1,8 +1,6 @@
 package main
 
-import (
-	"GinHello/initRouter"
-)
+import "GinHello/initRouter"
 
 func main() {
 	router := initRouter.SetupRouter()

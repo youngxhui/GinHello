@@ -11,8 +11,8 @@ GET http://localhost:8080/login
 Content-Type: application/json
 
 {
-  "username": "123",
-  "password": "Hello Go"
+  "username": "youngxhui",
+  "password": "12qw"
 }
 
 
@@ -22,13 +22,13 @@ POST http://localhost:8080/register
 Content-Type: application/json
 
 {
-  "username": "123",
-  "password": "Hello Go"
+  "username": "youngxhui",
+  "password": "12qw"
 }
 
 ###
 
 GET http://localhost:8080
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMjMiLCJleHAiOjE1NjQ3OTQzNjIsImp0aSI6Ilx1MDAwMCIsImlhdCI6MTU2NDc5NDM0MiwiaXNzIjoiZ2luIGhlbGxvIiwibmJmIjoxNTY0Nzk0MzQyLCJzdWIiOiJsb2dpbiJ9.uQxGMsftyVFtYIGwQVm1QB2djw-uMfDbw81E5LMjliU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ5b3VuZ3hodWkiLCJleHAiOjE1NzIyNTk4NjcsImp0aSI6Ilx1MDAwNSIsImlhdCI6MTU3MjE3MzQ2NywiaXNzIjoiZ2luIGhlbGxvIiwibmJmIjoxNTcyMTczNDY3LCJzdWIiOiJsb2dpbiJ9.p4VC-Y-Xc6Bhi_Ae6r2KSCayEs6gd0vzPtstWuy43Vs
 ###

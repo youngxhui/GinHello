@@ -11,5 +11,6 @@ require (
 	golang.org/x/net v0.0.0-20190611141213-3f473d35a33a // indirect
 	golang.org/x/sys v0.0.0-20190610200419-93c9922d18ae // indirect
 	google.golang.org/appengine v1.6.1 // indirect
-	gopkg.in/go-playground/assert.v1 v1.2.1
 )
+
+go 1.13
