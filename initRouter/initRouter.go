@@ -24,5 +24,6 @@ func SetupRouter() *gin.Engine {
 		userRouter.GET("/:name", handler.UserSave)
 		userRouter.GET("", handler.UserSaveByQuery)
 	}
+
 	return router
 }
