@@ -6,5 +6,5 @@ import (
 
 func main() {
 	router := initRouter.SetupRouter()
-	_ = router.Run()
+	_ = router.Run(":8181")
 }

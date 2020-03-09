@@ -4,6 +4,7 @@ import (
 	"GinHello/model"
 	"GinHello/utils"
 	"database/sql"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -76,6 +77,7 @@ func UpdateUserProfile(context *gin.Context) {
 	}
 	path := utils.RootPath()
 	path = filepath.Join(path, "avatar")
+	fmt.Println("path =>", path)
 	e = os.MkdirAll(path, os.ModePerm)
 	if e != nil {
 		context.HTML(http.StatusOK, "error.tmpl", gin.H{
@@ -84,14 +86,14 @@ func UpdateUserProfile(context *gin.Context) {
 		log.Panicln("无法创建文件夹", e.Error())
 	}
 	fileName := strconv.FormatInt(time.Now().Unix(), 10) + file.Filename
-	e = context.SaveUploadedFile(file, path+fileName)
+	e = context.SaveUploadedFile(file, filepath.Join(path, fileName))
 	if e != nil {
 		context.HTML(http.StatusOK, "error.tmpl", gin.H{
 			"error": e,
 		})
 		log.Panicln("无法保存文件", e.Error())
 	}
-	avatarUrl := "http://localhost:8080/avatar/" + fileName
+	avatarUrl := "/avatar/" + fileName
 	user.Avatar = sql.NullString{String: avatarUrl}
 	e = user.Update(user.Id)
 	if e != nil {

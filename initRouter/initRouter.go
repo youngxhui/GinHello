@@ -5,6 +5,7 @@ import (
 	"GinHello/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"path/filepath"
 )
 
 func SetupRouter() *gin.Engine {
@@ -16,7 +17,7 @@ func SetupRouter() *gin.Engine {
 	}
 	router.StaticFile("/favicon.ico", "./favicon.ico")
 	router.Static("/statics", "./statics/")
-	router.StaticFS("/avatar", http.Dir(utils.RootPath()+"avatar/"))
+	router.StaticFS("/avatar", http.Dir(filepath.Join(utils.RootPath(), "avatar")))
 	index := router.Group("/")
 	{
 		index.Any("", handler.Index)
