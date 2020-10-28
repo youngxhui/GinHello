@@ -1,5 +1,7 @@
 # Hello Gin
 
+![CodeQL](https://github.com/youngxhui/GinHello/workflows/CodeQL/badge.svg)
+
 hello Gin 是 Gin 系列的示例代码，具体介绍请移步到 [ISLAND](https://youngxhui.top)
 
 ## 目录
