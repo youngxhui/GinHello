@@ -31,7 +31,7 @@ hello Gin 是 Gin 系列的示例代码，具体介绍请移步到 [ISLAND](http
 
 ## 其他
 
-该系列文章同时上线到 **[小专栏](https://xiaozhuanlan.com/youngxhui)** 售价 1.99￥ ,如果你觉得文章对你有所帮助，经济能力允许的范围内，欢迎在 **[小专栏](https://xiaozhuanlan.com/youngxhui)** 进行购买，支持一下作者。
+该系列文章同时上线到 **[小专栏](https://xiaozhuanlan.com/youngxhui)** 售价 4.99￥ ,如果你觉得文章对你有所帮助，经济能力允许的范围内，欢迎在 **[小专栏](https://xiaozhuanlan.com/youngxhui)** 进行购买，支持一下作者。
 
 感谢你的 star ✨
 

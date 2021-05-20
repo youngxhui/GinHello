@@ -1,15 +1,14 @@
-package index__test
+package router
 
 import (
-	"GinHello/initRouter"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 )
 
-func TestIndexGetRouter(t *testing.T) {
-	router := initRouter.SetupRouter()
+func TestRouter(t *testing.T) {
+	router := SetupRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 	router.ServeHTTP(w, req)
