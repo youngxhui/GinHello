@@ -1,10 +1,10 @@
 package main
 
 import (
-	"GinHello/initRouter"
+	"GinHello/router"
 )
 
 func main() {
-	router := initRouter.SetupRouter()
+	router := router.SetupRouter()
 	_ = router.Run()
 }

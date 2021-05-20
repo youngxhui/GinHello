@@ -1,4 +1,4 @@
-package initRouter
+package router
 
 import (
 	"GinHello/handler"

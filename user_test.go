@@ -1,7 +1,7 @@
-package test
+package main
 
 import (
-	"GinHello/initRouter"
+	"GinHello/router"
 	"gopkg.in/go-playground/assert.v1"
 	"net/http"
 	"net/http/httptest"
@@ -11,7 +11,7 @@ import (
 
 func TestUserSave(t *testing.T) {
 	username := "lisi"
-	router := initRouter.SetupRouter()
+	router := router.SetupRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/user/"+username, nil)
 	router.ServeHTTP(w, req)
@@ -22,7 +22,7 @@ func TestUserSave(t *testing.T) {
 func TestUserSaveQuery(t *testing.T) {
 	username := "lisi"
 	age := 18
-	router := initRouter.SetupRouter()
+	router := router.SetupRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/user?name="+username+"&age="+strconv.Itoa(age), nil)
 	router.ServeHTTP(w, req)
@@ -32,7 +32,7 @@ func TestUserSaveQuery(t *testing.T) {
 
 func TestUserSaveWithNotAge(t *testing.T) {
 	username := "lisi"
-	router := initRouter.SetupRouter()
+	router := router.SetupRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/user?name="+username, nil)
 	router.ServeHTTP(w, req)
