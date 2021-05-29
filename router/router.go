@@ -1,4 +1,4 @@
-package initRouter
+package router
 
 import (
 	"GinHello/handler"
@@ -6,24 +6,24 @@ import (
 )
 
 func SetupRouter() *gin.Engine {
-	router := gin.Default()
+	eng := gin.Default()
 	if mode := gin.Mode(); mode == gin.TestMode {
-		router.LoadHTMLGlob("./../templates/*")
+		eng.LoadHTMLGlob("./../templates/*")
 	} else {
-		router.LoadHTMLGlob("templates/*")
+		eng.LoadHTMLGlob("templates/*")
 	}
-	router.StaticFile("/favicon.ico", "./favicon.ico")
-	router.Static("/statics", "./statics")
-	index := router.Group("/")
+	eng.StaticFile("/favicon.ico", "./favicon.ico")
+	eng.Static("/statics", "./statics")
+	index := eng.Group("/")
 	{
 		index.Any("", handler.Index)
 	}
 	// 添加 user
-	userRouter := router.Group("/user")
+	userRouter := eng.Group("/user")
 	{
 		userRouter.GET("/:name", handler.UserSave)
 		userRouter.GET("", handler.UserSaveByQuery)
 	}
 
-	return router
+	return eng
 }
