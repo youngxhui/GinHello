@@ -1,13 +1,15 @@
 package router
 
 import (
-	"GinHello/handler"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
+
+	"gin.hello/handler"
+
+	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter() *gin.Engine {
+func InitRouter() *gin.Engine {
 	router := gin.Default()
 
 	index := router.Group("/")

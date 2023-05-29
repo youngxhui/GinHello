@@ -11,7 +11,7 @@ import (
 
 // router("/") get 测试
 func TestIndexGetRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 	router.ServeHTTP(w, req)
@@ -22,7 +22,7 @@ func TestIndexGetRouter(t *testing.T) {
 
 // router("/") post 测试
 func TestIndexPostRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodPost, "/", nil)
 	router.ServeHTTP(w, req)
@@ -32,7 +32,7 @@ func TestIndexPostRouter(t *testing.T) {
 
 // router("/") put 测试
 func TestIndexPutRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodPut, "/", nil)
 	router.ServeHTTP(w, req)
@@ -42,7 +42,7 @@ func TestIndexPutRouter(t *testing.T) {
 
 // router("/") delete 测试
 func TestIndexDeleteRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodDelete, "/", nil)
 	router.ServeHTTP(w, req)
@@ -52,7 +52,7 @@ func TestIndexDeleteRouter(t *testing.T) {
 
 // router("/") patch 测试
 func TestIndexPatchRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodPatch, "/", nil)
 	router.ServeHTTP(w, req)
@@ -62,7 +62,7 @@ func TestIndexPatchRouter(t *testing.T) {
 
 // router("/") head 测试
 func TestIndexHeadRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodHead, "/", nil)
 	router.ServeHTTP(w, req)
@@ -72,7 +72,7 @@ func TestIndexHeadRouter(t *testing.T) {
 
 // router("/") options 测试
 func TestIndexOptionsRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodOptions, "/", nil)
 	router.ServeHTTP(w, req)
@@ -82,7 +82,7 @@ func TestIndexOptionsRouter(t *testing.T) {
 
 func TestUserSave(t *testing.T) {
 	username := "lisi"
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/user/"+username, nil)
 	router.ServeHTTP(w, req)
@@ -93,7 +93,7 @@ func TestUserSave(t *testing.T) {
 func TestUserSaveQuery(t *testing.T) {
 	username := "lisi"
 	age := 18
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/user?name="+username+"&age="+strconv.Itoa(age), nil)
 	router.ServeHTTP(w, req)
@@ -103,7 +103,7 @@ func TestUserSaveQuery(t *testing.T) {
 
 func TestUserSaveWithNotAge(t *testing.T) {
 	username := "lisi"
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/user?name="+username, nil)
 	router.ServeHTTP(w, req)
