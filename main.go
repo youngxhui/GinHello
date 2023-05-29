@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	router := router.SetupRouter()
+	router := router.InitRouter()
 	_ = router.Run()
 }
