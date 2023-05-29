@@ -8,7 +8,7 @@ import (
 )
 
 func TestRouter(t *testing.T) {
-	router := SetupRouter()
+	router := InitRouter()
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest(http.MethodGet, "/", nil)
 	router.ServeHTTP(w, req)
