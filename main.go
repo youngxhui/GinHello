@@ -1,11 +1,15 @@
 package main
 
 import (
-	"GinHello/router"
+	"log"
+
+	"gin.hello/router"
 )
 
 func main() {
-	eng := router.SetupRouter()
-
-	_ = eng.Run(":8181")
+	router := router.InitRouter()
+	err := router.Run(":8081")
+	if err != nil {
+		log.Fatalln("gin run error",err)
+	}
 }

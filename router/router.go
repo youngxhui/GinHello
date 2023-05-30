@@ -1,11 +1,11 @@
 package router
 
 import (
-	"GinHello/handler"
+	"gin.hello/handler"
 	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter() *gin.Engine {
+func InitRouter() *gin.Engine {
 	eng := gin.Default()
 	if mode := gin.Mode(); mode == gin.TestMode {
 		eng.LoadHTMLGlob("./../templates/*")
