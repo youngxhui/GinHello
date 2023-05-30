@@ -1,7 +1,7 @@
 package initRouter
 
 import (
-	"GinHello/handler"
+	"gin.hello/handler"
 	"github.com/gin-gonic/gin"
 )
 

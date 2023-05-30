@@ -1,7 +1,7 @@
 package test
 
 import (
-	"GinHello/initRouter"
+	"gin.hello/initRouter"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"net/http"

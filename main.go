@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GinHello/initRouter"
+	"gin.hello/initRouter"
 )
 
 func main() {
